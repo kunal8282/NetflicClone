@@ -1,10 +1,18 @@
-import { useState } from "react";
+import {  useState } from "react";
 import SignInForm from "../Components/SignInForm";
 import SignUpForm from "../Components/SignUpForm";
 import { NETFLIX_BG_BANNER, NETFLIX_LOGO } from "../utils/constant";
+import {useNavigate} from 'react-router-dom'
+import { auth } from '../utils/firebase';
+
 
 const AuthenticationPage = () => {
-  const [isVisible, setisVisible] = useState(true);
+  const [isVisible, setisVisible] = useState(false);
+  const navigate = useNavigate()
+  const user = auth.currentUser;
+
+  console.log(user);
+
 
   return (
     <div className="relative h-screen overflow-hidden">

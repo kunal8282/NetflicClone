@@ -5,6 +5,7 @@
 - Build Authentication Page
 - Build SignIn and SignUp Form Component
 - Validate function for form
+- Authenatication using Firebase 
 
 # Feature / Planning
 

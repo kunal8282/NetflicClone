@@ -1,9 +1,9 @@
-import AuthenticationPage from "./AuthenticationPage"
+import Header from "../Components/Header"
 
 const Body = () => {
   return (
-    <div>
-        <AuthenticationPage />
+    <div className="">
+        <Header />
     </div>
   )
 }
