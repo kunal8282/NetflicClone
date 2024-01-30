@@ -7,12 +7,15 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import FormErrorComponent from "./FormErrorComponent";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const SignInForm = ({ setisVisible, isVisible }) => {
   const email = useRef();
   const password = useRef();
   const [isEmailValidate, setisEmailValidate] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
@@ -20,7 +23,11 @@ const SignInForm = ({ setisVisible, isVisible }) => {
 
     if (!isEmailValidate) return;
 
-    signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+    signInWithEmailAndPassword(
+      auth,
+      email.current.value,
+      password.current.value
+    )
       .then(() => {
         // Signed in
         navigate("/", {
@@ -39,9 +46,7 @@ const SignInForm = ({ setisVisible, isVisible }) => {
 
         {errorMessage && (
           <div>
-            <FormErrorComponent
-              errorCode={errorMessage}
-            />
+            <FormErrorComponent errorCode={errorMessage} />
           </div>
         )}
 
@@ -64,13 +69,41 @@ const SignInForm = ({ setisVisible, isVisible }) => {
           )}
         </div>
 
-        <div className="py-1">
+        <div
+          className="relative w-11/12 py-1"
+        >
           <input
             ref={password}
             type="password"
             placeholder="Password"
-            className="w-11/12 px-3 py-3 rounded bg-stone-800 bg-opacity-50 border border-stone-500 outline-3"
+            className="w-full px-3 py-3 rounded bg-stone-800 bg-opacity-50 border border-stone-500 outline-3"
           />
+
+          <button
+            className="absolute top-5 right-0 px-2 cursor-pointer opacity-60 text-sm transition-opacity"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowPassword(!showPassword);
+            }}
+          >
+            {!showPassword ? (
+              <FontAwesomeIcon
+                icon={icon({
+                  name: "eye",
+                  family: "classic",
+                  style: "regular",
+                })}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={icon({
+                  name: "eye-slash",
+                  family: "classic",
+                  style: "regular",
+                })}
+              />
+            )}
+          </button>
         </div>
 
         <div className="flex flex-col items-center w-11/12">
