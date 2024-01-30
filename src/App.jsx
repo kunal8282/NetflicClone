@@ -3,6 +3,7 @@ import AuthenticationPage from "./Pages/AuthenticationPage";
 import Body from "./Pages/Body";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import WatchPage from "./Pages/WatchPage";
+import { AuthProvider } from "./Components/AuthProvider";
 
 const route = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const route = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={route} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={route} />;
+    </AuthProvider>
+  );
 }
 
 export default App;

@@ -6,6 +6,7 @@
 - Build SignIn and SignUp Form Component
 - Validate function for form
 - Authenatication using Firebase 
+- Add Protected Route to the component (Takeaway : Do not use Navigate hook in useEffect, for Protected Route)
 
 # Feature / Planning
 
