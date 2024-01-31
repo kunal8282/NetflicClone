@@ -14,7 +14,17 @@ const SearchPage = lazy(() => import("./Components/SearchComponent"));
 const route = createBrowserRouter([
   {
     path: "/login",
-    element: <AuthenticationPage />,
+    element: (
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen bg-black">
+            <Loader />
+          </div>
+        }
+      >
+        <AuthenticationPage />
+      </Suspense>
+    ),
   },
   {
     path: "/",
@@ -35,7 +45,13 @@ const route = createBrowserRouter([
       {
         path: "gptSearch",
         element: (
-          <Suspense fallback={<Loader />}>
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen bg-black">
+                <Loader />
+              </div>
+            }
+          >
             <ProtectedRoute>
               <GPTSearchPage />
             </ProtectedRoute>
@@ -45,7 +61,13 @@ const route = createBrowserRouter([
       {
         path: "search",
         element: (
-          <Suspense fallback={<Loader />}>
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen bg-black">
+                <Loader />
+              </div>
+            }
+          >
             <ProtectedRoute>
               <SearchPage />
             </ProtectedRoute>

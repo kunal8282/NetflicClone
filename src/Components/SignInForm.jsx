@@ -74,7 +74,7 @@ const SignInForm = ({ setisVisible, isVisible }) => {
         >
           <input
             ref={password}
-            type="password"
+            type= {!showPassword ? "password" : "text"}
             placeholder="Password"
             className="w-full px-3 py-3 rounded bg-stone-800 bg-opacity-50 border border-stone-500 outline-3"
           />

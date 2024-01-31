@@ -1,3 +1,4 @@
+import Loader from "./Loader"
 import VideoTitleComponent from "./VideoTitleComponent"
 import VideoTrailerComponent from "./VideoTrailerComponent"
 import {useSelector} from 'react-redux'
@@ -6,7 +7,7 @@ const PrimaryComponent = () => {
 
   const trendingMovies = useSelector((store) => store.movie?.trending)
 
-  if(!trendingMovies) return(<div>Loading...</div>)
+  if(!trendingMovies) return(<div className="flex justify-center items-center h-screen bg-black"><Loader /></div>)
 
   return (
     <div className="">

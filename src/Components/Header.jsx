@@ -34,22 +34,23 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-5 relative w-3/12 justify-end">
-          
           <Link to={"/gptSearch"}>
             <button className="bg-green-900 rounded text-sm px-2 py-1">
               GPT Search
             </button>
           </Link>
 
-          <button className="text-lg ">
-            <FontAwesomeIcon
-              icon={icon({
-                name: "magnifying-glass",
-                family: "classic",
-                style: "solid",
-              })}
-            />
-          </button>
+          <Link to={'/search'}>
+            <button className="text-lg ">
+              <FontAwesomeIcon
+                icon={icon({
+                  name: "magnifying-glass",
+                  family: "classic",
+                  style: "solid",
+                })}
+              />
+            </button>
+          </Link>
 
           <button className="text-lg">
             <FontAwesomeIcon

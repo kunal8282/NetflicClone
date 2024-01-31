@@ -30,8 +30,8 @@ const SearchComponent = () => {
 
   return (
     <div className="h-screen bg-black">
-      <div className="py-16 w-11/12 m-auto">
-          <SearchFormComponent searchData={searchData} />
+      <div className="flex justify-center items-center w-full pt-16 pb-4">
+          <SearchFormComponent searchData={searchData} placeholder = {"Search for movies, TV Shows and More"}/>
       </div>
 
       {

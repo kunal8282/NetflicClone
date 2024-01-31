@@ -43,7 +43,7 @@ const GPTSearchComponent = () => {
   return (
     <div className="bg-black w-full h-screen">
       <div className="pt-16 pb-4 flex justify-center items-center w-full">
-        <SearchFormComponent searchData={handleformSumbit}/>
+        <SearchFormComponent searchData={handleformSumbit} placeholder = {"What on Your Mind? "}/>
       </div>
 
       {isLoad === false && <div className="text-white flex justify-center items-center h-3/">
