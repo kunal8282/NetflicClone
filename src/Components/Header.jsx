@@ -13,7 +13,7 @@ const Header = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto ">
+    <div className="w-11/12 mx-auto">
       <div className="flex items-center justify-between py-2">
         <div className="flex items-center gap-8">
           <div className="w-24">
@@ -29,7 +29,7 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="flex items-center gap-5 relative">
+        <div className="flex items-center gap-5 relative w-2/12 justify-end">
           <button className="text-lg ">
             <FontAwesomeIcon
               icon={icon({
@@ -65,7 +65,7 @@ const Header = () => {
             </button>
           </div>
 
-         {isVisibleDropDown && <div className = "absolute right-0 top-10 w-full ">
+         {isVisibleDropDown && <div className = "absolute right-0 top-10 w-full">
               <DropDownBox />
           </div>  }      
 

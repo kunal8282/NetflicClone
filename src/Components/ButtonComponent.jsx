@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
 
-const ButtonComponent = ({title}) => {
+const ButtonComponent = ({title ,children}) => {
   return (
-    <button className="bg-red-700 py-2 rounded w-full">{title}</button>
+    <button className="bg-red-700 py-2 rounded w-full">
+      {children}
+      {title}
+    </button>
   )
 }
 
 ButtonComponent.propTypes = {
-    title : PropTypes.string
+    title : PropTypes.string,
+    children : PropTypes.node
 }
 
 
