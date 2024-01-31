@@ -1,5 +1,8 @@
 # Netflix Clone with Recommended search system using ChatGPT
 
+Not a responsive website so please using desktop
+Tech Stack : ReactJS, Firebase, TailwindCSS, Vite, OpenAI API's 
+
 # Build Till Now
 
 - Build Authentication Page
