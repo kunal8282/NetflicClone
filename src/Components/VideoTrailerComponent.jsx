@@ -3,8 +3,6 @@ import { fetchData } from "../utils/api";
 import { options } from "../utils/constant";
 import PropTypes from 'prop-types';
 
-
-
 const VideoTrailerComponent = ({moviesID}) => {
   const [videoID, setvideoID] = useState(null)
 
@@ -26,6 +24,7 @@ const VideoTrailerComponent = ({moviesID}) => {
 
   }, [moviesID]);
   
+  console.log(videoID);
   
 
   return (

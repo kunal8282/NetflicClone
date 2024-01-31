@@ -11,7 +11,13 @@
 - Fetch data from TMDB API and Store the general data to store
 - Add Header to component and Dropdown menu Component and add signout logic
 - Add Component where video trailer run in background and video title on top
-- 
+- Add Carsouel list component and card component
+- Add Normal Search Page to search movies on names
+- Add GPTSearch Component which uses openai api to recommend movies 
+- Build common form component for both GPTSearch and Normal Search Page
+- Add lazy loading to GPT search component
+- Add Spinner Loader Shimmer UI 
+
 
 
 
@@ -34,3 +40,6 @@
     - Search Bar
     - Movies Suggestion
 
+
+# Looked upto List
+- Width issue with carousel component

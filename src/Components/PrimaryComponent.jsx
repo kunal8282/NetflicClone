@@ -9,7 +9,7 @@ const PrimaryComponent = () => {
   if(!trendingMovies) return(<div>Loading...</div>)
 
   return (
-    <div>
+    <div className="">
         <div>
             <VideoTrailerComponent moviesID={trendingMovies[0]?.id}/>
         </div>

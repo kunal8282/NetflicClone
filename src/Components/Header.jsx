@@ -1,27 +1,31 @@
 import { NETFLIX_LOGO } from "../utils/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
-import DropDownBox from './DropDownBox'
+import DropDownBox from "./DropDownBox";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  
   const [isVisibleDropDown, setisVisibleDropDown] = useState(false);
 
   const handleDropDownClick = () => {
-    setisVisibleDropDown(!isVisibleDropDown)
-  }
+    setisVisibleDropDown(!isVisibleDropDown);
+  };
 
   return (
     <div className="w-11/12 mx-auto">
       <div className="flex items-center justify-between py-2">
         <div className="flex items-center gap-8">
           <div className="w-24">
-            <img src={NETFLIX_LOGO} alt="logo" className="w-full" />
+            <Link to={"/"}>
+              <img src={NETFLIX_LOGO} alt="logo" className="w-full" />
+            </Link>
           </div>
 
           <ul className="flex gap-5 text-sm font-semibold">
-            <li>Home</li>
+            <li>
+              <Link to={"/"}>Home </Link>
+            </li>
             <li>TV Show</li>
             <li>Movies</li>
             <li>New & Popular</li>
@@ -29,7 +33,14 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="flex items-center gap-5 relative w-2/12 justify-end">
+        <div className="flex items-center gap-5 relative w-3/12 justify-end">
+          
+          <Link to={"/gptSearch"}>
+            <button className="bg-green-900 rounded text-sm px-2 py-1">
+              GPT Search
+            </button>
+          </Link>
+
           <button className="text-lg ">
             <FontAwesomeIcon
               icon={icon({
@@ -59,16 +70,18 @@ const Header = () => {
                   family: "classic",
                   style: "solid",
                 })}
-
-                className= {`${isVisibleDropDown && 'rotate-180'} transition-transform`}
+                className={`${
+                  isVisibleDropDown && "rotate-180"
+                } transition-transform`}
               />
             </button>
           </div>
 
-         {isVisibleDropDown && <div className = "absolute right-0 top-10 w-full">
+          {isVisibleDropDown && (
+            <div className="absolute right-0 top-10 w-8/12 bg-stone-900">
               <DropDownBox />
-          </div>  }      
-
+            </div>
+          )}
         </div>
       </div>
     </div>

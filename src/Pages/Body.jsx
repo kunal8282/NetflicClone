@@ -7,8 +7,8 @@ import {
   addUpcomingMovies,
   addtopRatedMovies,
 } from "../utils/redux-slice/movieSlice";
-import HomePage from "./HomePage";
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
   useDataDispatchtoStore(
@@ -36,7 +36,7 @@ const Body = () => {
 
     useEffect(() => {
       const scrollEvent = window.addEventListener("scroll", () => {
-        if(window.scrollY >= 150){
+        if(window.scrollY >= 100){
           setScrollChange(true)
         }else{
           setScrollChange(false)
@@ -49,13 +49,12 @@ const Body = () => {
 
   return (
     <div className="relative">
-      <div className= {`fixed w-full text-white z-10 ${scrollChange && 'bg-black'} transition-colors`}>
+      <div className= {`fixed w-full text-white z-10 ${scrollChange && 'bg-black'} transition-shadow`}>
         <Header />
       </div>
-      
-      <div className="absolute w-full -top-14">
-        <HomePage />
-      </div>
+
+      <Outlet /> 
+
     </div>
   );
 };

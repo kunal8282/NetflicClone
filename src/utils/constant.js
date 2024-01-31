@@ -8,5 +8,7 @@ export const options = {
       accept: 'application/json',
       Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN_AUTH}`
     }
-  };
+};
+
+export const TMDB_MOVIES_IMG_URL = `https://image.tmdb.org/t/p/w500`
   
