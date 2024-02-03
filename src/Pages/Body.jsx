@@ -51,7 +51,7 @@ const Body = () => {
   return (
     <div className="relative bg-black ">
       <div
-        className={`fixed w-full text-white z-10 ${
+        className={`fixed w-full text-white z-30 ${
           scrollChange && "bg-black"
         } transition-shadow`}
       >
