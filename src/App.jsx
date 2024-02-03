@@ -2,17 +2,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Body from "./Pages/Body";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthProvider } from "./Components/AuthProvider";
-import HomePage from "./Pages/HomePage";
 import { lazy, Suspense } from "react";
 import Loader from "./Components/Loader";
-import VideoPlayerComponent from "./Components/VideoPlayerComponent";
 
-
+const HomePage = lazy(() => import("./Pages/HomePage"));
 const AuthenticationPage = lazy(() => import("./Pages/AuthenticationPage"));
 const GPTSearchPage = lazy(() => import("./Components/GPTSearchComponent"));
 const SearchPage = lazy(() => import("./Components/SearchComponent"));
 const WatchPage = lazy(() => import("./Pages/WatchPage"));
 const MyListPage = lazy(() => import("./Pages/MyListPage"));
+const VideoPlayerComponent = lazy(() =>
+  import("./Components/VideoPlayerComponent")
+);
 
 const route = createBrowserRouter([
   {
@@ -40,9 +41,17 @@ const route = createBrowserRouter([
       {
         path: "/",
         element: (
-          <ProtectedRoute>
-            <HomePage />
-          </ProtectedRoute>
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen bg-black">
+                <Loader />
+              </div>
+            }
+          >
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          </Suspense>
         ),
       },
       {
