@@ -33,7 +33,7 @@ const RecommendedList = ({id}) => {
   }
 
   return (
-    <div>
+    <div >
         <CardCarousel title={"You may Like it"} data = {reconmendedMovies}/>
     </div>
   )

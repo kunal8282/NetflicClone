@@ -38,7 +38,7 @@ const WatchPage = () => {
       <div className="bg-black text-white">
         <div>
           <div>
-            <VideoTrailerComponent moviesID={videoDetails?.id} />
+            <VideoTrailerComponent moviesID={videoDetails?.id} backdrop_path={videoDetails?.backdrop_path}/>
           </div>
 
           {videoDetails && (

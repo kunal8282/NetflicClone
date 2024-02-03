@@ -17,7 +17,7 @@ const CardCarousel = ({ title , data }) => {
 
   return (
     <div className="py-4">
-       <h1 className="text-2xl font-semibold py-3">{title}</h1> 
+       <h1 className="text-2xl font-semibold py-3 z-10 relative">{title}</h1> 
       <Slider {...settings}>
         {data &&
           data?.map((items) => <CardComponent key={items.id} {...items} />)}

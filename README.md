@@ -24,6 +24,7 @@ Tech Stack : ReactJS, Firebase, TailwindCSS, Vite, OpenAI API's
 - Add Video Watch Page
 - Minor Bug Fix
 - Add WishList Pages by using redux to store data
+- Minor Bug Fix in VideoTrailer Component :  If Video is not avaiable then show poster of movie
 
 
 

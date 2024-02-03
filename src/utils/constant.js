@@ -11,4 +11,5 @@ export const options = {
 };
 
 export const TMDB_MOVIES_IMG_URL = `https://image.tmdb.org/t/p/w500`
+export const TMDB_MOVIES_ORIGINAL_IMG_URL = `https://image.tmdb.org/t/p/original`
   

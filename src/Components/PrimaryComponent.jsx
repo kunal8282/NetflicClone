@@ -12,7 +12,7 @@ const PrimaryComponent = () => {
   return (
     <div className="">
         <div>
-            <VideoTrailerComponent moviesID={trendingMovies[0]?.id}/>
+            <VideoTrailerComponent moviesID={trendingMovies[0]?.id} backdrop_path={trendingMovies[0]?.backdrop_path}/>
         </div>
 
         <div >
