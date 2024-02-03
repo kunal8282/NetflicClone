@@ -48,5 +48,5 @@ Tech Stack : ReactJS, Firebase, TailwindCSS, Vite, OpenAI API's
     - Movies Suggestion
 
 
-# Looked upto List
+# Issues
 - Width issue with carousel component
