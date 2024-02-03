@@ -1,6 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { add } from "../utils/redux-slice/wishlistSlice";
+import { remove } from "../utils/redux-slice/wishlistSlice";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const VideoTitleComponent = ({
   title,
@@ -9,7 +15,25 @@ const VideoTitleComponent = ({
   runtime,
   vote_average,
   genres,
+  id,
+  poster_path,
 }) => {
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist);
+  const [isInWishList, setIsInWishList] = useState(
+    wishlist.filter((item) => item.id === id).length > 0 ? true : false
+  );
+
+  const wishlistClickHandler = () => {
+    setIsInWishList(true);
+    dispatch(add({ id, poster_path }));
+  };
+
+  const removeFromWishListHandler = () => {
+    setIsInWishList(false)
+    dispatch(remove({ id }));
+  }
+  
   return (
     <div>
       <div className="flex flex-col justify-center px-16 absolute bg-gradient-to-r from-black w-full aspect-video top-0 text-white">
@@ -43,7 +67,9 @@ const VideoTitleComponent = ({
               {genres.map((element, index) => (
                 <span
                   key={element.id}
-                  className={index !== genres.length - 1 && "border-r-2 pr-3"}
+                  className={
+                    index !== genres.length - 1 ? "border-r-2 pr-3" : ""
+                  }
                 >
                   {element.name}
                 </span>
@@ -52,20 +78,40 @@ const VideoTitleComponent = ({
           )}
         </div>
 
-        <div className="py-3 flex">
-          <button className="flex justify-center items-center w-1/4 px-6 py-2 bg-white text-black rounded mr-2 outline-none font-semibold">
-            <FontAwesomeIcon
-              icon={icon({ name: "play", family: "classic", style: "solid" })}
-              className="px-2 text-sm"
-            />
-            Watch Now
-          </button>
-          <button className="bg-white px-4 rounded bg-opacity-15">
-            {" "}
-            <FontAwesomeIcon
-              icon={icon({ name: "plus", family: "classic", style: "solid" })}
-            />
-          </button>
+        <div className="py-3 flex gap-2">
+          <Link to={"/video/" + id} className="w-1/4">
+            <button className="flex justify-center items-center w-full px-6 py-2 bg-white text-black rounded mr-2 outline-none font-semibold">
+              <FontAwesomeIcon
+                icon={icon({ name: "play", family: "classic", style: "solid" })}
+                className="px-2 text-sm"
+              />
+              Watch Now
+            </button>
+          </Link>
+
+          {!isInWishList ? (
+            <button
+              className="bg-white px-4 rounded bg-opacity-15"
+              onClick={wishlistClickHandler}
+            >
+              <FontAwesomeIcon
+                icon={icon({ name: "plus", family: "classic", style: "solid" })}
+              />
+            </button>
+          ) : (
+            <button
+              className="bg-white px-4 rounded bg-opacity-15"
+              onClick={removeFromWishListHandler}
+            >
+              <FontAwesomeIcon
+                icon={icon({
+                  name: "check",
+                  family: "classic",
+                  style: "solid",
+                })}
+              />
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -79,6 +125,8 @@ VideoTitleComponent.propTypes = {
   runtime: PropTypes.number,
   vote_average: PropTypes.number,
   genres: PropTypes.array,
+  id: PropTypes.number,
+  poster_path: PropTypes.string,
 };
 
 export default VideoTitleComponent;

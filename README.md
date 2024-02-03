@@ -20,7 +20,10 @@ Tech Stack : ReactJS, Firebase, TailwindCSS, Vite, OpenAI API's
 - Build common form component for both GPTSearch and Normal Search Page
 - Add lazy loading to GPT search component
 - Add Spinner Loader Shimmer UI 
-
+- Add WatchPage 
+- Add Video Watch Page
+- Minor Bug Fix
+- Add WishList Pages by using redux to store data
 
 
 

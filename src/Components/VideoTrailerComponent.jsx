@@ -5,17 +5,23 @@ import PropTypes from 'prop-types';
 
 const VideoTrailerComponent = ({moviesID}) => {
   const [videoID, setvideoID] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
+
+    if(moviesID === undefined) return;
 
     const fetchVideoID = async () => {
         try {
           const results = await fetchData(`https://api.themoviedb.org/3/movie/${moviesID}/videos?language=en-US`,options)
           results?.results && results?.results.filter((element) => {
-            if (element.type === "Trailer") setvideoID(element.key)
+            if (element.type === "Trailer"){
+              setvideoID(element.key)
+            }
           });
         }
         catch(error) {
+          setError(error)
           console.log(error)
         }
     }
@@ -24,8 +30,8 @@ const VideoTrailerComponent = ({moviesID}) => {
 
   }, [moviesID]);
   
-  console.log(videoID);
-  
+  if(moviesID === undefined) return <div>Something went wrong</div>
+  if(error) return <div>Something went wrong</div>
 
   return (
     <div className="text-white">

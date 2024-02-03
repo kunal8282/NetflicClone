@@ -26,10 +26,9 @@ const Header = () => {
             <li>
               <Link to={"/"}>Home </Link>
             </li>
-            <li>TV Show</li>
-            <li>Movies</li>
-            <li>New & Popular</li>
-            <li>My List</li>
+            <li>
+              <Link to={"/mylist"}>My List</Link>
+            </li>
           </ul>
         </div>
 

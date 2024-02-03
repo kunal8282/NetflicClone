@@ -10,7 +10,9 @@ import {
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
+
 const Body = () => {
+
   useDataDispatchtoStore(
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
     addNowPlayingMovies
@@ -32,29 +34,31 @@ const Body = () => {
     addTrendingMovies
   );
 
-    const [scrollChange, setScrollChange] = useState(false);
+  const [scrollChange, setScrollChange] = useState(false);
 
-    useEffect(() => {
-      const scrollEvent = window.addEventListener("scroll", () => {
-        if(window.scrollY >= 100){
-          setScrollChange(true)
-        }else{
-          setScrollChange(false)
-        }
-      }) 
+  useEffect(() => {
+    const scrollEvent = window.addEventListener("scroll", () => {
+      if (window.scrollY >= 100) {
+        setScrollChange(true);
+      } else {
+        setScrollChange(false);
+      }
+    });
 
-      return () => window.removeEventListener("scroll", scrollEvent)
-    }, [scrollChange])
-    
+    return () => window.removeEventListener("scroll", scrollEvent);
+  }, [scrollChange]);
 
   return (
-    <div className="relative">
-      <div className= {`fixed w-full text-white z-10 ${scrollChange && 'bg-black'} transition-shadow`}>
+    <div className="relative bg-black ">
+      <div
+        className={`fixed w-full text-white z-10 ${
+          scrollChange && "bg-black"
+        } transition-shadow`}
+      >
         <Header />
       </div>
 
-      <Outlet /> 
-
+      <Outlet />
     </div>
   );
 };

@@ -1,15 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AuthenticationPage from "./Pages/AuthenticationPage";
 import Body from "./Pages/Body";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import WatchPage from "./Pages/WatchPage";
 import { AuthProvider } from "./Components/AuthProvider";
 import HomePage from "./Pages/HomePage";
 import { lazy, Suspense } from "react";
 import Loader from "./Components/Loader";
+import VideoPlayerComponent from "./Components/VideoPlayerComponent";
 
+
+const AuthenticationPage = lazy(() => import("./Pages/AuthenticationPage"));
 const GPTSearchPage = lazy(() => import("./Components/GPTSearchComponent"));
 const SearchPage = lazy(() => import("./Components/SearchComponent"));
+const WatchPage = lazy(() => import("./Pages/WatchPage"));
+const MyListPage = lazy(() => import("./Pages/MyListPage"));
 
 const route = createBrowserRouter([
   {
@@ -74,14 +77,54 @@ const route = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "watch/:id",
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen bg-black">
+                <Loader />
+              </div>
+            }
+          >
+            <ProtectedRoute>
+              <WatchPage />
+            </ProtectedRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: "myList",
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen bg-black">
+                <Loader />
+              </div>
+            }
+          >
+            <ProtectedRoute>
+              <MyListPage />
+            </ProtectedRoute>
+          </Suspense>
+        ),
+      },
     ],
   },
   {
-    path: "/watch",
+    path: "/video/:id",
     element: (
-      <ProtectedRoute>
-        <WatchPage />
-      </ProtectedRoute>
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen bg-black">
+            <Loader />
+          </div>
+        }
+      >
+        <ProtectedRoute>
+          <VideoPlayerComponent />
+        </ProtectedRoute>
+      </Suspense>
     ),
   },
 ]);
