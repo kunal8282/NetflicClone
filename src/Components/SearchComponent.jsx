@@ -9,6 +9,7 @@ const SearchComponent = () => {
   const [searchResult, setSearchResult] = useState(null);
   const [loading, setLoading] = useState(undefined);
   const [error, setError] = useState(null);
+  document.title = "Search - Netflix";
 
   const searchData = async (searchText) => {
     setLoading(true);
@@ -26,7 +27,7 @@ const SearchComponent = () => {
     }
   };
 
-  console.log(searchResult);
+  if(error) return <div className="text-xl flex justify-center items-center h-screen">Something went wrong</div>
 
   return (
     <div className="h-screen bg-black">

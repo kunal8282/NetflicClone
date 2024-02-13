@@ -46,7 +46,7 @@ const VideoTrailerComponent = ({ moviesID, backdrop_path }) => {
         <img src={TMDB_MOVIES_ORIGINAL_IMG_URL + backdrop_path} alt="" className="h-full w-full"/>
       </div>
     );
-
+  
 
   return (
     <div className="text-white">

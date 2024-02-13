@@ -13,6 +13,7 @@ const WatchPage = () => {
   const {id} = useParams()
 
   useEffect(() => {
+
     const fetchVideoDetail = async () => {
       setIsLoading(true);
       try {
@@ -21,6 +22,7 @@ const WatchPage = () => {
           options
         );
         setVideoDetails(response);
+        document.title = response?.title || "Netflix";
       } catch (error) {
         console.log(error);
       } finally {
@@ -29,6 +31,7 @@ const WatchPage = () => {
     };
 
     fetchVideoDetail();
+  
   }, [id]);
 
   if(isLoading) return <div className="flex justify-center items-center h-screen"><Loader /></div>

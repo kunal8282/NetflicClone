@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import SearchFormComponent from "./SearchFormComponent";
 
 const GPTSearchComponent = () => {
+  document.title = "GPT Search - Netflix";
   const [gptSearchResult, setGPTSearchResult] = useState({});
   const [isLoad, setisLoad] = useState(undefined);
 

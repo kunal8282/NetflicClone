@@ -9,6 +9,7 @@ import {Navigate} from "react-router-dom"
 const AuthenticationPage = () => {
   const user = useAuth()
   const [isVisible, setisVisible] = useState(false);
+  document.title = "Netflix - Login";
 
   if(user) return <Navigate to={'/'} replace = {true}/>
 

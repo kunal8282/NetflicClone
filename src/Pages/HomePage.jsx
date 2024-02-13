@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 const HomePage = () => {
 
   const {nowPlaying, popular, trending, topRated, upcoming} = useSelector((store) => store?.movie)
+  document.title = "Home - Netflix"
 
   return (
     <div>

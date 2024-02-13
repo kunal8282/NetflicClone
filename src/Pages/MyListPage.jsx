@@ -3,6 +3,7 @@ import  CardComponent  from "../Components/CardComponent";
 
 const MyListPage = () => {
   const myList = useSelector((state) => state?.wishlist);
+  document.title = "My List";
 
   if (myList.length === 0) {
     return (

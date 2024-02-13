@@ -5,18 +5,18 @@ import {useSelector} from 'react-redux'
 
 const PrimaryComponent = () => {
 
-  const trendingMovies = useSelector((store) => store.movie?.trending)
+  const nowPlaying = useSelector((store) => store.movie?.nowPlaying)
 
-  if(!trendingMovies) return(<div className="flex justify-center items-center h-screen bg-black"><Loader /></div>)
+  if(!nowPlaying) return(<div className="flex justify-center items-center h-screen bg-black"><Loader /></div>)
 
   return (
     <div className="">
         <div>
-            <VideoTrailerComponent moviesID={trendingMovies[0]?.id} backdrop_path={trendingMovies[0]?.backdrop_path}/>
+            <VideoTrailerComponent moviesID={nowPlaying[0]?.id} backdrop_path={nowPlaying[0]?.backdrop_path}/>
         </div>
 
         <div >
-            <VideoTitleComponent {...trendingMovies[0]}/>
+            <VideoTitleComponent {...nowPlaying[0]}/>
         </div>
     </div>
   )
